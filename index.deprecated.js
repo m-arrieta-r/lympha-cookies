@@ -1,3 +1,7 @@
+/* Deprecated file, use sdk and chrome, now the functionality
+ * is replaced with webextensions.
+ */
+
 // jshint moz:true, esnext: true
 let { Cc, Ci } = require('chrome');
 const tabs = require("sdk/tabs");

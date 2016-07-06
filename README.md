@@ -1,2 +1,5 @@
 #Lympha
-A basic add-on
+
+## What it does
+
+Remove cookies of the specific site.
