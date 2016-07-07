@@ -17,8 +17,8 @@
   "permissions": [
     "tabs",
     "<all_urls>",
-    "cookies"
-
+    "cookies",
+    "notifications"
   ],
   "browser_action": {
     "default_icon": "data/icon.png",
@@ -27,6 +27,7 @@
 
   "background": {
     "scripts": ["main.js"]
-  }
+  },
+  "default_locale": "en"
 
 }

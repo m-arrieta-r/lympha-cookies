@@ -1,13 +1,20 @@
 
-
+var count = 0;
 function toggleBookmark(tab) {
   var domainStr = extractDomain(tab.url);
-  console.log("url -> "+domainStr);
   browser.cookies.getAll({domain: domainStr}, removeCookies);
 }
 
-function logCookie(c) {
-  console.log("Log "+c);
+function notify(count) {
+  //console.log("background script received message");
+  var title = chrome.i18n.getMessage("notificationTitle");
+  var content = chrome.i18n.getMessage("notificationContent", count);
+  browser.notifications.create({
+    "type": "basic",
+    "iconUrl": browser.extension.getURL("data/icon.png"),
+    "title": title,
+    "message": content
+  });
 }
 
 function logError(e) {
@@ -15,13 +22,21 @@ function logError(e) {
 }
 
 function removeCookies(cookies) {
-  console.log(cookies.length);
-  cookies.forEach((currentCookie, index, array) => {
-    console.log("currentCookie.domain "+currentCookie.domain);
-    console.log("currentCookie.name "+currentCookie.name);
-    var removeCookie = browser.cookies.remove({ url: currentCookie.domain, name: currentCookie.name});
-    removeCookie.then(logCookie, logError);
+  count = 0;
+  if(cookies.length === 0) {
+    notify("0");
+  }
+  cookies.forEach((cookie, index, array) => {
+    var url = (cookie.secure)?"https://"+cookie.domain:"https://"+cookie.domain;
+    var removeCookie = browser.cookies.remove({ url: url, name: cookie.name, storeId: cookie.storeId});
+    removeCookie.then((c)=> {
+      count = (c !== null)?count+1:count;
+      if(cookies.length === count) {
+        notify(count.toString());
+      }
+    }, logError);
   });
+
 }
 
 
