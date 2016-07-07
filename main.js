@@ -1,6 +1,6 @@
 
 var count = 0;
-function toggleBookmark(tab) {
+function toggle(tab) {
   var domainStr = extractDomain(tab.url);
   browser.cookies.getAll({domain: domainStr}, removeCookies);
 }
@@ -39,7 +39,6 @@ function removeCookies(cookies) {
 
 }
 
-
 function extractDomain(url) {
     var domain;
     //find & remove protocol (http, ftp, etc.) and get domain
@@ -53,4 +52,29 @@ function extractDomain(url) {
     return domain.replace("www.", "");
 }
 
-browser.browserAction.onClicked.addListener(toggleBookmark);
+function contextMenusClicked(info, tab) {
+ if (info.menuItemId == "lympha-ctx-btn") {
+   toggle(tab);
+ }
+}
+
+function commandsClicked(command) {
+  if (command == "toggle-feature") {
+    browser.tabs.query({active: true}, (tabArray) => {
+      toggle(tabArray[0]);
+    });
+  }
+}
+
+function init() {
+  browser.contextMenus.create({
+    id: "lympha-ctx-btn",
+    title: chrome.i18n.getMessage("lymphaCtxBtn"),
+    contexts: ["all"]
+  });
+  chrome.contextMenus.onClicked.addListener(contextMenusClicked);
+  browser.browserAction.onClicked.addListener(toggle);
+  browser.commands.onCommand.addListener(commandsClicked);
+}
+
+init();

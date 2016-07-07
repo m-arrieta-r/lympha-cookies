@@ -13,7 +13,10 @@
     "message": "Lympha Notification",
     "description": "Title of the click notification."
   },
-
+  "lymphaCtxBtn": {
+    "message": "Remove cookies",
+    "description": "Title of context menu item that adds a green border when clicked."
+  },
   "notificationContent": {
     "message": "$COUNT$ cookie(s) removed",
     "description": "Tells the user how many are removed",
