@@ -8,6 +8,6 @@ A basic add-on. Gets rid of a current site's cookies.
 
 Features:
 - Use webextension API
-- Hotkey (Ctrl + shift + L)
+- Hotkey (Ctrl + shift + L). On Mac (Ctrl + shift + L) 
 - Button Option
 - Added to context-menu
