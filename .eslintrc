@@ -1,0 +1,23 @@
+{
+    "rules": {
+        keyword-spacing: [
+            "warn", {
+                "before": true,
+                "after": true,
+        }],
+        one-var: ["warn", "never"],
+        brace-style: "warn",
+        space-before-function-paren: ["warn", "never"],
+        no-unused-vars: ["warn", { "args": "none", "vars": "local" }],
+        no-use-before-define: ["error", { "functions": false, "classes": false, "variables": false }],
+        no-console: ["warn", { allow: ["warn", "error"] }],
+        no-cond-assign: ["error"],
+        no-alert: "error",
+        no-dupe-keys: "error",
+        eqeqeq: ["error", "smart"]
+    },
+    "env": {
+        "node": true,
+        "es6": true
+    }
+}

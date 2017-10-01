@@ -1,8 +1,7 @@
 {
-
+  "name": "Lympha",
   "description": "Remove cookies of the specific site.",
   "manifest_version": 2,
-  "name": "Lympha",
   "version": "0.3",
   "homepage_url": "https://github.com/MARNUTUX/lympha-cookies",
   "applications": {
