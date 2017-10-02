@@ -11,6 +11,12 @@ function toggle(tab) {
 }
 
 function notify(count) {
+    clearTimeout();
+    browser.browserAction.setBadgeText({text: `-${count.toString()}`});
+    setTimeout( () => {
+        browser.browserAction.setBadgeText({text: ''});
+    }, 2500);
+
     if (options.lympha.notifications) {
         const title = browser.i18n.getMessage("notificationTitle");
         const content = browser.i18n.getMessage("notificationContent", count.toString());
@@ -92,7 +98,7 @@ function commandsClicked(command) {
 function loadOptions() {
     let gettingOptions = browser.storage.sync.get({
         "lympha": {
-            "notifications": true
+            "notifications": false
         }
     });
     gettingOptions.then((obj) => {

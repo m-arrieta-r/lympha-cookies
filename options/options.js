@@ -12,7 +12,7 @@ function restore() {
     const notifications = document.getElementById('notifications');
     const options = browser.storage.sync.get({
         "lympha": {
-            "notifications": true
+            "notifications": false
         }
     });
     options.then((res) => {
