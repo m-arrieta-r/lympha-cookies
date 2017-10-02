@@ -2,7 +2,7 @@
   "name": "Lympha",
   "description": "Remove cookies of the specific site.",
   "manifest_version": 2,
-  "version": "0.3",
+  "version": "1.0",
   "homepage_url": "https://github.com/MARNUTUX/lympha-cookies",
   "applications": {
     "gecko": {
@@ -18,7 +18,8 @@
     "<all_urls>",
     "cookies",
     "notifications",
-    "contextMenus"
+    "contextMenus",
+    "storage"
   ],
   "browser_action": {
     "default_icon": "data/icon.png",
@@ -33,7 +34,9 @@
   "default_locale": "en",
   "commands": {
     "toggle-feature": {
-      "suggested_key": { "default": "Ctrl+Shift+L" },
+      "suggested_key": {
+          "default": "Ctrl+Shift+L"
+      },
       "description": "Remove cookies"
     }
   }
