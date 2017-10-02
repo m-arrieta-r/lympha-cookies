@@ -1,43 +1,43 @@
 {
-  "name": "Lympha",
-  "description": "Remove cookies of the specific site.",
-  "manifest_version": 2,
-  "version": "1.0",
-  "homepage_url": "https://github.com/MARNUTUX/lympha-cookies",
-  "applications": {
-    "gecko": {
-      "id": "@lympha",
-      "strict_min_version": "48.0"
+    "name": "Lympha",
+    "description": "Remove cookies of the specific site.",
+    "manifest_version": 2,
+    "version": "1.0",
+    "homepage_url": "https://github.com/MARNUTUX/lympha-cookies",
+    "applications": {
+        "gecko": {
+            "id": "@lympha",
+            "strict_min_version": "48.0"
+        }
+    },
+    "icons": {
+        "48": "data/icon.png"
+    },
+    "permissions": [
+        "tabs",
+        "<all_urls>",
+        "cookies",
+        "notifications",
+        "contextMenus",
+        "storage"
+    ],
+    "browser_action": {
+        "default_icon": "data/icon.png",
+        "default_title": "Clean it!"
+    },
+    "options_ui": {
+        "page": "options/options.html"
+    },
+    "background": {
+        "scripts": ["main.js"]
+    },
+    "default_locale": "en",
+    "commands": {
+        "toggle-feature": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+L"
+            },
+            "description": "Remove cookies"
+        }
     }
-  },
-  "icons": {
-    "48": "data/icon.png"
-  },
-  "permissions": [
-    "tabs",
-    "<all_urls>",
-    "cookies",
-    "notifications",
-    "contextMenus",
-    "storage"
-  ],
-  "browser_action": {
-    "default_icon": "data/icon.png",
-    "default_title": "Clean it!"
-  },
-  "options_ui": {
-      "page": "options/options.html"
-  },
-  "background": {
-    "scripts": ["main.js"]
-  },
-  "default_locale": "en",
-  "commands": {
-    "toggle-feature": {
-      "suggested_key": {
-          "default": "Ctrl+Shift+L"
-      },
-      "description": "Remove cookies"
-    }
-  }
 }

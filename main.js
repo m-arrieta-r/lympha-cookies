@@ -106,6 +106,16 @@ function loadOptions() {
     });
 }
 
+function onStorageChange(changes, area) {
+    const changedItems = Object.keys(changes);
+
+    for (var item of changedItems) {
+        if (item === 'lympha') {
+            loadOptions();
+        }
+    }
+}
+
 function init() {
     loadOptions();
     browser.contextMenus.create({
@@ -113,6 +123,8 @@ function init() {
         title: chrome.i18n.getMessage("lymphaCtxBtn"),
         contexts: ["all"]
     });
+
+    browser.storage.onChanged.addListener(onStorageChange);
     browser.contextMenus.onClicked.addListener(contextMenusClicked);
     browser.browserAction.onClicked.addListener(toggle);
     browser.commands.onCommand.addListener(commandsClicked);
